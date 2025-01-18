@@ -2,9 +2,9 @@
 
 Create directory for images on Proxmox
 ```bash
-mkdir images && cd $_
+mkdir /root/images && cd $_
 ```
-Downlaod OPNsense Image from Officle-Site and covert to qcow2. [Link]([https://opnsense.org/download/])
+Downlaod OPNsense Image from Officle-Site and covert to qcow2. [label]([https://opnsense.org/download/])
 ```bash
 wget https://mirror.ams1.nl.leaseweb.net/opnsense/releases/24.7/OPNsense-24.7-nano-amd64.img.bz2
 bunzip2 OPNsense-24.7-nano-amd64.img.bz2
