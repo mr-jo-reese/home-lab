@@ -1,0 +1,25 @@
+---
+- name: Erstelle eine neue VM auf Proxmox
+  hosts: proxmox
+  gather_facts: false
+  vars:
+    VMID: "{{ vmid }}"
+    OS_TYPE: "{{ os_type }}"
+    HN: "{{ hostname }}"
+    CORE_COUNT: "{{ core_count }}"
+    RAM_SIZE: "{{ ram_size }}"
+  tasks:
+    - name: VM erstellen
+      command: >
+        qm create {{ VMID }} 
+        --agent 1 
+        --ostype {{ OS_TYPE }} 
+        --name {{ HN }} 
+        --cores {{ CORE_COUNT }} 
+        --memory {{ RAM_SIZE }} 
+        --net0 virtio,bridge=vmbr0 
+        --net1 virtio,bridge=vmbr1 
+        --net2 virtio,bridge=vmbr2 
+        --serial0 socket
+      become: true
+      become_user: root
